@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Autorouter">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Autorouter/out/artifacts/Autorouter_jar/Autorouter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
