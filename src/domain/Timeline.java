@@ -21,26 +21,29 @@ public class Timeline {
     }
 
     //сохренение верной сортировки - на стороне кода-клиента
-    public void engageByIndex(Date opEnding, double duration, int index) {
+    public TimeGap engageByIndex(Date opEnding, double duration, int index) {
         Date opStart = new Date((long) (opEnding.getTime() - duration * 1000));
-        busyTimes.add(index, new TimeGap(opStart, opEnding));
+        TimeGap tg = new TimeGap(opStart, opEnding);
+        busyTimes.add(index, tg);
+        return tg;
     }
 
     //сохренение верной сортировки - на стороне кода-клиента
-    public void engageLeft(Date opEnding, double duration) {
+    public TimeGap engageLeft(Date opEnding, double duration) {
         Date opStart = new Date((long) (opEnding.getTime() - duration * 1000));
-        busyTimes.addFirst(new TimeGap(opStart, opEnding));
+        TimeGap tg = new TimeGap(opStart, opEnding);
+        busyTimes.addFirst(tg);
+        return tg;
     }
 
     //найти свободное время на таймлайне и занять его
-    public void findTime(Date notLater, double duration) {
+    public TimeGap findTimeAndEngage(Date notLater, double duration) {
         //TimeGap collide = checkCollide(notLater);
         int closestLeft = closestIndexLeft(notLater);
 
         //если точка левее всех отрезков, то просто занимаем самое "левое" время. Сортировка сохраняется.
         if (closestLeft == -1) {
-            engageLeft(notLater, duration);
-            return;
+            return engageLeft(notLater, duration);
         }
 
         //получаем отрезок, начало которого ближайшее слева
@@ -50,8 +53,7 @@ public class Timeline {
         // closestLeft + 1 и выходим
         if (!checkCollide(notLater, closest)) {
             if (notLater.getTime() - closest.gapEn.getTime() >= duration * 1000) {
-                engageByIndex(notLater, duration, closestLeft + 1);
-                return;
+                return engageByIndex(notLater, duration, closestLeft + 1);
             }
         }
         //если тестируемая точка лежит внутри closest, то необходимо проверить все пустые места поочередно влево, и
@@ -59,13 +61,43 @@ public class Timeline {
         for (int i = closestLeft; i > 0; i--) {
             closest = busyTimes.get(i);
             if (isFitBetween(busyTimes.get(i - 1), closest, duration)) {
-                engageByIndex(closest.gapSt, duration, i);
-                return;
+                return engageByIndex(closest.gapSt, duration, i);
             }
         }
         //если места так и не нашлось, занимаем место слева вплотную к нулевому отрезку (который станет после этого
         // первым)
-        engageLeft(busyTimes.get(0).gapSt, duration);
+        return engageLeft(busyTimes.get(0).gapSt, duration);
+    }
+
+    public Date findTime(Date notLater, double duration){
+        int closestLeft = closestIndexLeft(notLater);
+
+        //если точка левее всех отрезков, то просто возвращаем notLater - в нее можно вставить отрезок любой длины
+        if (closestLeft == -1) {
+            return notLater;
+        }
+
+        //получаем отрезок, начало которого ближайшее слева
+        TimeGap closest = busyTimes.get(closestLeft);
+        //Возможны две ситуации - тестируемая точка лежит внутри отрезка (true), или правее (false). Проверяем:
+        //если правее, то чекаем что "места" хватит на новый отрезок, если хватает, то записываем отрезок по индексу
+        // closestLeft + 1 и выходим
+        if (!checkCollide(notLater, closest)) {
+            if (notLater.getTime() - closest.gapEn.getTime() >= duration * 1000) {
+                return notLater;
+            }
+        }
+        //если тестируемая точка лежит внутри closest, то необходимо проверить все пустые места поочередно влево, и
+        // по возможности занять ближайшее
+        for (int i = closestLeft; i > 0; i--) {
+            closest = busyTimes.get(i);
+            if (isFitBetween(busyTimes.get(i - 1), closest, duration)) {
+                return closest.gapSt;
+            }
+        }
+        //если места так и не нашлось, занимаем место слева вплотную к нулевому отрезку (который станет после этого
+        // первым)
+        return busyTimes.get(0).gapSt;
     }
 
     //проверяем уместится ли операция между отрезками

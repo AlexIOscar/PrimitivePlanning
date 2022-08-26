@@ -1,9 +1,9 @@
 package debug;
 
 import domain.Timeline;
+import engine.Dispatcher;
 
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 
 public class Starter {
@@ -19,11 +19,11 @@ public class Starter {
         System.out.println(tl);
 
         System.out.println("after 1");
-        tl.findTime(new Date(d.getTime() - 1500), 600);
+        tl.findTimeAndEngage(new Date(d.getTime() - 1500), 600);
         System.out.println(tl);
 
         System.out.println("after 2");
-        tl.findTime(new Date(d.getTime() - 1500), 600);
+        tl.findTimeAndEngage(new Date(d.getTime() - 1500), 600);
         System.out.println(tl);
 
         System.out.println("размещаем промежуток 5 минут");
@@ -33,13 +33,13 @@ public class Starter {
         System.out.println(tl);
 
         System.out.println("after 3");
-        tl.findTime(new Date(d.getTime() - 1500), 660);
+        tl.findTimeAndEngage(new Date(d.getTime() - 1500), 660);
         System.out.println(tl);
 
         System.out.println("after 4");
-        tl.findTime(new Date(d.getTime() - 1500), 240);
+        tl.findTimeAndEngage(new Date(d.getTime() - 1500), 240);
         System.out.println(tl);
 
-
+        Dispatcher ds = new Dispatcher();
     }
 }

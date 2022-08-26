@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="test" />
+    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="test">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/engine/Dispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/debug/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/Starter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Timeline.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +25,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2DhBjydSVpF4uOe7nHENrKoF4CS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -27,11 +37,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Autorouter/out/artifacts/Autorouter_jar/Autorouter.jar" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="domain" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Starter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -115,7 +131,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Revert &quot;Initial commit&quot;&#10;&#10;This reverts commit 87fec935" />
