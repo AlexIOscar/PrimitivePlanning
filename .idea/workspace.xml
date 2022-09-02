@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="test">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/Resource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/engine/Dispatcher.java" afterDir="false" />
+    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="Multiple changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/debug/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/Starter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Timeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Dispatcher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661337289031</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Multiple changes">
+      <created>1661487387254</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661487387254</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,6 +140,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Revert &quot;Initial commit&quot;&#10;&#10;This reverts commit 87fec935" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Multiple changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple changes" />
   </component>
 </project>

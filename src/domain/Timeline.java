@@ -12,7 +12,7 @@ public class Timeline {
         this.busyTimes = new LinkedList<>();
     }
 
-    //занять время на таймлайне (хардово, без любых проверок). Последующая сортировка плоха для перформанса, зато
+    //Занять время на таймлайне (хардово, без любых проверок). Последующая сортировка плоха для перформанса, зато
     // гарантирует получение упорядоченного листа после вызова
     public void engageTime(Date opEnding, double duration) {
         Date opStart = new Date((long) (opEnding.getTime() - duration * 1000));
@@ -20,7 +20,7 @@ public class Timeline {
         Collections.sort(busyTimes);
     }
 
-    //сохренение верной сортировки - на стороне кода-клиента
+    //сохранение верной сортировки - на стороне кода-клиента
     public TimeGap engageByIndex(Date opEnding, double duration, int index) {
         Date opStart = new Date((long) (opEnding.getTime() - duration * 1000));
         TimeGap tg = new TimeGap(opStart, opEnding);
@@ -28,7 +28,7 @@ public class Timeline {
         return tg;
     }
 
-    //сохренение верной сортировки - на стороне кода-клиента
+    //сохранение верной сортировки - на стороне кода-клиента
     public TimeGap engageLeft(Date opEnding, double duration) {
         Date opStart = new Date((long) (opEnding.getTime() - duration * 1000));
         TimeGap tg = new TimeGap(opStart, opEnding);
@@ -38,41 +38,28 @@ public class Timeline {
 
     //найти свободное время на таймлайне и занять его
     public TimeGap findTimeAndEngage(Date notLater, double duration) {
-        //TimeGap collide = checkCollide(notLater);
-        int closestLeft = closestIndexLeft(notLater);
+        IndexWrapper iw = new IndexWrapper();
+        Date d = findTime(notLater, duration, iw);
 
-        //если точка левее всех отрезков, то просто занимаем самое "левое" время. Сортировка сохраняется.
-        if (closestLeft == -1) {
-            return engageLeft(notLater, duration);
+        if (iw.index == 0) {
+            return engageLeft(d, duration);
+        } else {
+            return engageByIndex(d, duration, iw.index);
         }
-
-        //получаем отрезок, начало которого ближайшее слева
-        TimeGap closest = busyTimes.get(closestLeft);
-        //возможны две ситуации - тестируемая точка лежит внутри отрезка (true), или правее (false). Проверяем:
-        //если правее, то чекаем что "места" хватит на новый отрезок, если хватает, то записываем отрезок по индексу
-        // closestLeft + 1 и выходим
-        if (!checkCollide(notLater, closest)) {
-            if (notLater.getTime() - closest.gapEn.getTime() >= duration * 1000) {
-                return engageByIndex(notLater, duration, closestLeft + 1);
-            }
-        }
-        //если тестируемая точка лежит внутри closest, то необходимо проверить все пустые места поочередно влево, и
-        // по возможности занять ближайшее
-        for (int i = closestLeft; i > 0; i--) {
-            closest = busyTimes.get(i);
-            if (isFitBetween(busyTimes.get(i - 1), closest, duration)) {
-                return engageByIndex(closest.gapSt, duration, i);
-            }
-        }
-        //если места так и не нашлось, занимаем место слева вплотную к нулевому отрезку (который станет после этого
-        // первым)
-        return engageLeft(busyTimes.get(0).gapSt, duration);
     }
 
-    public Date findTime(Date notLater, double duration){
+    /**
+     * Найти время без его занятия, вернуть точку окончания найденного отрезка времени
+     * @param notLater
+     * @param duration
+     * @param iw
+     * @return
+     */
+    public Date findTime(Date notLater, double duration, IndexWrapper iw){
         int closestLeft = closestIndexLeft(notLater);
 
         //если точка левее всех отрезков, то просто возвращаем notLater - в нее можно вставить отрезок любой длины
+        //iw.index остается нулевым, поскольку занять надо самое левое место
         if (closestLeft == -1) {
             return notLater;
         }
@@ -84,6 +71,7 @@ public class Timeline {
         // closestLeft + 1 и выходим
         if (!checkCollide(notLater, closest)) {
             if (notLater.getTime() - closest.gapEn.getTime() >= duration * 1000) {
+                iw.index = closestLeft + 1;
                 return notLater;
             }
         }
@@ -92,12 +80,25 @@ public class Timeline {
         for (int i = closestLeft; i > 0; i--) {
             closest = busyTimes.get(i);
             if (isFitBetween(busyTimes.get(i - 1), closest, duration)) {
+                iw.index = i;
                 return closest.gapSt;
             }
         }
+
         //если места так и не нашлось, занимаем место слева вплотную к нулевому отрезку (который станет после этого
         // первым)
+        // iw.index остается нулевым, поскольку занять надо самое левое место
         return busyTimes.get(0).gapSt;
+    }
+
+    /**
+     * класс-обертка для индекса
+     */
+    private static class IndexWrapper {
+        private int index;
+        private IndexWrapper() {
+            this.index = 0;
+        }
     }
 
     //проверяем уместится ли операция между отрезками
@@ -105,7 +106,7 @@ public class Timeline {
         return tg2.gapSt.getTime() - tg1.gapEn.getTime() >= duration * 1000;
     }
 
-    //проверяем момент времени на "столкновение" с любым из занятых промежутков. если занят, то возвращается
+    //Проверяем момент времени на "столкновение" с любым из занятых промежутков. Если занят, то возвращается
     // промежуток, с которым произошла коллизия, если свободен - null.
     private TimeGap checkAnyCollide(Date moment) {
         for (int i = busyTimes.size() - 1; i >= 0; i--) {

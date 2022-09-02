@@ -1,13 +1,27 @@
 package debug;
 
+import autorouter.core.Piece;
 import domain.Timeline;
+import elements.Bend;
+import elements.Contour;
+import elements.Roll;
+import elements.SkewPunch;
 import engine.Dispatcher;
-
 import java.util.Calendar;
 import java.util.Date;
 
 public class Starter {
     public static void main(String[] args) {
+        Dispatcher ds = new Dispatcher();
+        Piece pc = new Piece();
+        pc.addElement(new Roll());
+        pc.addElement(new Bend());
+        pc.addElement(new Contour());
+        pc.addElement(new SkewPunch());
+        ds.planPiece(pc);
+    }
+
+    private static void test1(){
         Timeline tl = new Timeline();
 
         Calendar cal = Calendar.getInstance();
@@ -39,7 +53,5 @@ public class Starter {
         System.out.println("after 4");
         tl.findTimeAndEngage(new Date(d.getTime() - 1500), 240);
         System.out.println(tl);
-
-        Dispatcher ds = new Dispatcher();
     }
 }
