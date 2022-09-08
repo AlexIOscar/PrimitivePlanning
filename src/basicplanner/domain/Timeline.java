@@ -1,4 +1,4 @@
-package domain;
+package basicplanner.domain;
 
 import java.util.*;
 

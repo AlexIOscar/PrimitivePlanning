@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="Multiple changes">
+      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/LabourDispatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/DrillingValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/PlasmaValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/ShearingValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/SourceValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/debug/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Timeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Dispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/debug/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/debug/Starter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/domain/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/domain/Timeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Dispatcher.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -32,16 +40,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Autorouter/out/artifacts/Autorouter_jar/Autorouter.jar" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;C:/IntellijProj/EmptyUI&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="domain" />
@@ -49,11 +55,11 @@
   </component>
   <component name="RunManager">
     <configuration name="Starter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="debug.Starter" />
+      <option name="MAIN_CLASS_NAME" value="basicplanner.debug.Starter" />
       <module name="PrimitivePlanning" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="debug.*" />
+          <option name="PATTERN" value="basicplanner.debug.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -111,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661487387254</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Multiple changes">
+      <created>1662112507152</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662112507152</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
