@@ -33,7 +33,7 @@ public class PlannerDispatcher {
 
         opToSourceCache = new HashMap<>();
 
-        Resource mg6001 = new Resource("MStep MG6001");
+        Resource mg6001 = new Resource("MStep MG.6001");
         Resource voortman = new Resource("Voortman V304");
         Resource shearMachine = new Resource("Shear");
 
@@ -64,6 +64,7 @@ public class PlannerDispatcher {
 
     //запланировать деталь
     public void planPiece(Piece piece) {
+        /*
         Set<Element> elSet = piece.getElementList();
         for (Element el : elSet) {
             List<Resource> resources = opToSourceCache.get(el.getClass());
@@ -71,10 +72,21 @@ public class PlannerDispatcher {
                 Double duration = LabourDispatcher.getDuration(el, r, piece);
             }
         }
-    }
+         */
 
-    public double getLabourTime(Element el, Resource res) {
-        return 42;
+        Set<Set<? extends Element>> pieceBundleSet = piece.getBundleSet();
+        for (Set<? extends Element> bundle : pieceBundleSet) {
+            List<Resource> resources;
+            try {
+                resources = opToSourceCache.get(bundle.iterator().next().getClass());
+            } catch (NoSuchElementException nsee) {
+                System.out.println("bundle is empty");
+                continue;
+            }
+            for (Resource r : resources) {
+                double duration = LabourDispatcher.getDuration(bundle, r, piece);
+            }
+        }
     }
 
     /**

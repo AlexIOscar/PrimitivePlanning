@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Starter {
+
     public static void main(String[] args) {
         Resource rs = new Resource("ms-mg6001");
         System.out.println(rs.getTimeline());
