@@ -1,24 +1,19 @@
 package basicplanner.debug;
 
 import autorouter.core.Piece;
-import basicplanner.domain.Resource;
 import basicplanner.domain.Timeline;
-import elements.Bend;
 import elements.Contour;
-import elements.Roll;
-import elements.SkewPunch;
 import basicplanner.engine.PlannerDispatcher;
-import basicplanner.engine.validator.PlasmaValidator;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Starter {
 
     public static void main(String[] args) {
-        Resource rs = new Resource("ms-mg6001");
-        System.out.println(rs.getTimeline());
-        rs.setValidator(new PlasmaValidator(40, false));
+        test2();
     }
 
     private static void test1(){
@@ -58,10 +53,18 @@ public class Starter {
     private static void test2(){
         PlannerDispatcher ds = new PlannerDispatcher();
         Piece pc = new Piece();
-        pc.addElement(new Roll());
-        pc.addElement(new Bend());
-        pc.addElement(new Contour());
-        pc.addElement(new SkewPunch());
-        //ds.planPiece(pc);
+        Set<Contour> contBundle = new HashSet<>();
+        Contour c = new Contour();
+        contBundle.add(c);
+        pc.getBundleSet().add(contBundle);
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(2022, Calendar.AUGUST, 25, 12, 0, 0);
+        Date d = cal.getTime();
+
+        for (int i = 0; i <= 100; i++){
+            ds.planPiece(pc, d);
+        }
+        System.out.println(ds.resourceList);
     }
 }

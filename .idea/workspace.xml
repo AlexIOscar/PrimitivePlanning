@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="1. Operation bundles added to dispatchers">
+    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="1. planPiece refactored">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PrimitivePlanning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PrimitivePlanning.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/debug/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/debug/Starter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/domain/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/domain/Timeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/LabourDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/LabourDispatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,14 +35,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;C:/IntellijProj/EmptyUI&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/IntellijProj/EmptyUI",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="domain" />
@@ -131,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662966422040</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1. planPiece refactored">
+      <created>1663552953074</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1663552953074</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,6 +172,18 @@
     <MESSAGE value="Multiple changes" />
     <MESSAGE value="Multiple changes (business development)" />
     <MESSAGE value="1. Operation bundles added to dispatchers" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Operation bundles added to dispatchers" />
+    <MESSAGE value="1. planPiece refactored" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. planPiece refactored" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/basicplanner/debug/Starter.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

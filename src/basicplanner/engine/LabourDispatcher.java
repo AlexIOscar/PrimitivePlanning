@@ -17,6 +17,11 @@ public class LabourDispatcher {
     // В реальных механизмах расчета норма считается сразу на группу элементов, например, сверловка группы отверстий.
     // Группа элементов представлена в детали в виде набора (bundle)
     public static double getDuration(Set<? extends Element> elBundle, Resource r, Piece p) {
-        return 42;
+        switch (r.name){
+            case "MStep MG.6001": return 35;
+            case "Voortman V304": return 30;
+            case "Shear": return 50;
+            default: return 42;
+        }
     }
 }

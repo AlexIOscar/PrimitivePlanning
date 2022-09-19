@@ -146,13 +146,20 @@ public class Timeline {
     }
 
     //промежуток времени на таймлайне
-    static class TimeGap implements Comparable<TimeGap> {
-        Date gapSt;
-        Date gapEn;
-
+    public static class TimeGap implements Comparable<TimeGap> {
+        private final Date gapSt;
+        private final Date gapEn;
         public TimeGap(Date gapSt, Date gapEn) {
             this.gapSt = gapSt;
             this.gapEn = gapEn;
+        }
+
+        public Date getGapSt() {
+            return gapSt;
+        }
+
+        public Date getGapEn() {
+            return gapEn;
         }
 
         @Override

@@ -13,7 +13,7 @@ import basicplanner.engine.validator.ShearingValidator;
 
 public class PlannerDispatcher {
     List<Piece> planningList;
-    List<Resource> resourceList;
+    public List<Resource> resourceList;
 
     //Карта соответствия между элементом и его приоритетом изготовления. Нужна по причине отсутствия готового блока
     // поиска путей на графе. В качестве упрощения здесь будет использован механизм простого ранжирования по приоритетам
@@ -79,7 +79,7 @@ public class PlannerDispatcher {
             try {
                 resources = opToSourceCache.get(bundle.iterator().next().getClass());
             } catch (NoSuchElementException nsee) {
-                System.out.println("bundle is empty");
+                System.out.println("bundles is empty");
                 continue;
             }
             //карта, в которую будем класть вычисленные трудоемкости для разных ресурсов
@@ -101,13 +101,27 @@ public class PlannerDispatcher {
         for (Set<? extends Element> bundle : route) {
             //для данной "операции" получаем карту "станок - трудоемкость"
             Map<Resource, Double> labByResMap = labMap.get(bundle);
-            //создаем карту "станок - дата исполнения"
-            Map<Resource, Date> dateMap = new HashMap<>();
+            //создаем карту "станок - дата исполнения с индексом"
+            Map<Resource, DateIndexPare> dateMap2 = new HashMap<>();
             for (Resource res : labByResMap.keySet()) {
-                Date time = res.getTimeline().findTime(notLater, labByResMap.get(res), new Timeline.IndexWrapper());
-                dateMap.put(res, time);
+                Timeline.IndexWrapper iw = new Timeline.IndexWrapper();
+                Date time = res.getTimeline().findTime(notLater, labByResMap.get(res), iw);
+                dateMap2.put(res, new DateIndexPare(time, iw.getIndex()));
             }
-            dateMap.entrySet();
+            //получаем список энтри-сетов, и упорядочиваем его, чтобы найти наиболее !позднее время
+            List<Map.Entry<Resource, DateIndexPare>> entryList = new ArrayList<>(dateMap2.entrySet());
+            entryList.sort((o1, o2) -> (int) (o2.getValue().d.getTime() - o1.getValue().d.getTime()));
+
+            //целевая запись: в ней та единица оборудования, на которой произвести операцию можно к наиболее близкому
+            // к notLater моменту (по направлению в прошлое)
+            Map.Entry<Resource, DateIndexPare> latestEntry = entryList.get(0);
+            Date d = latestEntry.getValue().d;
+            double dur = labMap.get(bundle).get(latestEntry.getKey());
+            //занимаем время на таймлайне ресурса
+            Timeline.TimeGap tg =
+                    latestEntry.getKey().getTimeline().engageByIndex(d, dur, latestEntry.getValue().index);
+            //перед следующим проходом передвигаем notLater на начало промежутка, занятого в данном цикле
+            notLater = tg.getGapSt();
         }
     }
 
@@ -126,5 +140,15 @@ public class PlannerDispatcher {
             System.out.println("не найден приоритет элемента");
         }
         return out;
+    }
+
+    private static class DateIndexPare {
+        Date d;
+        int index;
+
+        public DateIndexPare(Date d, int index) {
+            this.d = d;
+            this.index = index;
+        }
     }
 }
