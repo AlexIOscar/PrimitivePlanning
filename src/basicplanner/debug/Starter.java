@@ -62,6 +62,6 @@ public class Starter {
         pc.addElement(new Bend());
         pc.addElement(new Contour());
         pc.addElement(new SkewPunch());
-        ds.planPiece(pc);
+        //ds.planPiece(pc);
     }
 }

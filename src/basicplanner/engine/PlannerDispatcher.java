@@ -5,6 +5,7 @@ import autorouter.core.Piece;
 import java.util.*;
 
 import basicplanner.domain.Resource;
+import basicplanner.domain.Timeline;
 import basicplanner.engine.validator.DrillingValidator;
 import elements.*;
 import basicplanner.engine.validator.PlasmaValidator;
@@ -62,20 +63,18 @@ public class PlannerDispatcher {
         this.resourceList = new ArrayList<>();
     }
 
-    //запланировать деталь
-    public void planPiece(Piece piece) {
-        /*
-        Set<Element> elSet = piece.getElementList();
-        for (Element el : elSet) {
-            List<Resource> resources = opToSourceCache.get(el.getClass());
-            for (Resource r : resources) {
-                Double duration = LabourDispatcher.getDuration(el, r, piece);
-            }
-        }
-         */
+    /**
+     * Получить для детали карту <группа элементов, время выполнения>
+     *
+     * @param piece деталь
+     * @return карта bundle - labour time
+     */
+    private Map<Set<? extends Element>, Map<Resource, Double>> getLabMap(Piece piece) {
+        //создаем карту, в которую по объекту "группа"(bundle) будем класть/получать рассчитанное время, чтоб не
+        //считать его больше одного раза
+        Map<Set<? extends Element>, Map<Resource, Double>> bundlesTimeMap = new HashMap<>();
 
-        Set<Set<? extends Element>> pieceBundleSet = piece.getBundleSet();
-        for (Set<? extends Element> bundle : pieceBundleSet) {
+        for (Set<? extends Element> bundle : piece.getBundleSet()) {
             List<Resource> resources;
             try {
                 resources = opToSourceCache.get(bundle.iterator().next().getClass());
@@ -83,9 +82,32 @@ public class PlannerDispatcher {
                 System.out.println("bundle is empty");
                 continue;
             }
+            //карта, в которую будем класть вычисленные трудоемкости для разных ресурсов
+            Map<Resource, Double> labMapByResource = new HashMap<>();
             for (Resource r : resources) {
                 double duration = LabourDispatcher.getDuration(bundle, r, piece);
+                labMapByResource.put(r, duration);
             }
+            bundlesTimeMap.put(bundle, labMapByResource);
+        }
+        return bundlesTimeMap;
+    }
+
+    public void planPiece(Piece piece, Date notLater) {
+        //получаем карту вариантов (by resource) трудоемкостей на группу элементов
+        Map<Set<? extends Element>, Map<Resource, Double>> labMap = getLabMap(piece);
+        //и список этих групп в порядке исполнения (своего рода маршрут)
+        List<Set<? extends Element>> route = getRoute(piece.getBundleSet());
+        for (Set<? extends Element> bundle : route) {
+            //для данной "операции" получаем карту "станок - трудоемкость"
+            Map<Resource, Double> labByResMap = labMap.get(bundle);
+            //создаем карту "станок - дата исполнения"
+            Map<Resource, Date> dateMap = new HashMap<>();
+            for (Resource res : labByResMap.keySet()) {
+                Date time = res.getTimeline().findTime(notLater, labByResMap.get(res), new Timeline.IndexWrapper());
+                dateMap.put(res, time);
+            }
+            dateMap.entrySet();
         }
     }
 
@@ -96,10 +118,10 @@ public class PlannerDispatcher {
      * @param inputSet input set of elements
      * @return sorted list of elements
      */
-    private List<Element> getRoute(Set<Element> inputSet) {
-        List<Element> out = new ArrayList<>(inputSet);
+    private List<Set<? extends Element>> getRoute(Set<Set<? extends Element>> inputSet) {
+        List<Set<? extends Element>> out = new ArrayList<>(inputSet);
         try {
-            out.sort(Comparator.comparingInt(o -> ratedEls.get(o.getClass())));
+            out.sort(Comparator.comparingInt(o -> ratedEls.get(o.iterator().next().getClass())));
         } catch (NullPointerException npe) {
             System.out.println("не найден приоритет элемента");
         }

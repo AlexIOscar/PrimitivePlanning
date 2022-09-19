@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="Multiple changes (business development)">
+    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="1. Operation bundles added to dispatchers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/debug/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/debug/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/LabourDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/LabourDispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicplanner/domain/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/domain/Timeline.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662622076999</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1. Operation bundles added to dispatchers">
+      <created>1662966422040</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662966422040</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +162,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="Multiple changes" />
     <MESSAGE value="Multiple changes (business development)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Multiple changes (business development)" />
+    <MESSAGE value="1. Operation bundles added to dispatchers" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Operation bundles added to dispatchers" />
   </component>
 </project>

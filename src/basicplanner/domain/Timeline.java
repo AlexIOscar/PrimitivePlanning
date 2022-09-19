@@ -94,9 +94,13 @@ public class Timeline {
     /**
      * класс-обертка для индекса
      */
-    private static class IndexWrapper {
+    public static class IndexWrapper {
+
+        public int getIndex() {
+            return index;
+        }
         private int index;
-        private IndexWrapper() {
+        public IndexWrapper() {
             this.index = 0;
         }
     }
