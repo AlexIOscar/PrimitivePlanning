@@ -4,6 +4,7 @@ import autorouter.core.Piece;
 import basicplanner.domain.Timeline;
 import elements.Contour;
 import basicplanner.engine.PlannerDispatcher;
+import elements.SharpHole;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -52,17 +53,23 @@ public class Starter {
 
     private static void test2(){
         PlannerDispatcher ds = new PlannerDispatcher();
-        Piece pc = new Piece();
+        Piece pc = new Piece(10, 10, 10);
         Set<Contour> contBundle = new HashSet<>();
         Contour c = new Contour();
         contBundle.add(c);
+
+        Set<SharpHole> holes = new HashSet<>();
+        SharpHole sh1 = new SharpHole(12);
+        holes.add(sh1);
+
         pc.getBundleSet().add(contBundle);
+        pc.getBundleSet().add(holes);
 
         Calendar cal = Calendar.getInstance();
         cal.set(2022, Calendar.AUGUST, 25, 12, 0, 0);
         Date d = cal.getTime();
 
-        for (int i = 0; i <= 100; i++){
+        for (int i = 0; i <= 10; i++){
             ds.planPiece(pc, d);
         }
         System.out.println(ds.resourceList);

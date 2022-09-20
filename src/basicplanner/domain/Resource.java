@@ -6,11 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Resource {
+    //список элементов, с которыми умеет работать ресурс
     List<Class<? extends Element>> elements;
+    //таймлайн ресурса
     private Timeline timeline;
 
+    //валидатор - с помощью него можно уточнить, может ли данный элемент быть выполнен на данном ресурсе
+    // (удовлетворяет ли ограничениям)
     public SourceValidator<? extends Element> validator;
 
+    //наименование
     public String name;
 
     public Resource(String name) {

@@ -1,9 +1,12 @@
 package basicplanner.engine.validator;
 
 import autorouter.core.Piece;
+import elements.Element;
 import elements.SharpHole;
 
-public class DrillingValidator implements SourceValidator<SharpHole>{
+import java.util.Set;
+
+public class DrillingValidator implements SourceValidator<SharpHole> {
 
     double maxDiam;
 
@@ -12,7 +15,10 @@ public class DrillingValidator implements SourceValidator<SharpHole>{
     }
 
     @Override
-    public boolean validate(SharpHole element, Piece piece) {
-        return element.getDiameter() <= maxDiam;
+    public boolean validate(Set<SharpHole> element, Piece piece) {
+        for (SharpHole sh : element) {
+            if (sh.getDiameter() > maxDiam) return false;
+        }
+        return true;
     }
 }

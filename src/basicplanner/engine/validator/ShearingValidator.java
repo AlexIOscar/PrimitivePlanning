@@ -1,8 +1,12 @@
 package basicplanner.engine.validator;
+
 import autorouter.core.Piece;
 import elements.Contour;
+import elements.Element;
 
-public class ShearingValidator implements SourceValidator<Contour>{
+import java.util.Set;
+
+public class ShearingValidator implements SourceValidator<Contour> {
 
     double maxThickness;
 
@@ -11,9 +15,12 @@ public class ShearingValidator implements SourceValidator<Contour>{
     }
 
     @Override
-    public boolean validate(Contour contour, Piece piece) {
+    public boolean validate(Set<Contour> contour, Piece piece) {
         //Проверка на прямолинейность и выпуклость контура. Если и прямолинейный и выпуклый, то вырубка на гильотине
         // возможна
-        return auxillary.ContourSolver.isConvexNGon(contour) && piece.getHeight() <= maxThickness;
+        for (Contour c : contour) {
+            if (!(auxillary.ContourSolver.isConvexNGon(c) && piece.getHeight() <= maxThickness)) return false;
+        }
+        return true;
     }
 }
