@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="1. planPiece complete for first version">
-      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/PlannerContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/basicplanner/engine/ValidatorDispatcher.java" afterDir="false" />
+    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="1. PlannerContext extracted&#10;2. Comments added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/basicplanner/debug/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/debug/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/validator/DrillingValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/DrillingValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/validator/PlasmaValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/PlasmaValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/validator/ShearingValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/ShearingValidator.java" afterDir="false" />
@@ -150,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663575643555</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="1. PlannerContext extracted&#10;2. Comments added">
+      <created>1663642994156</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1663642994156</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,17 +187,7 @@
     <MESSAGE value="1. Operation bundles added to dispatchers" />
     <MESSAGE value="1. planPiece refactored" />
     <MESSAGE value="1. planPiece complete for first version" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. planPiece complete for first version" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/basicplanner/debug/Starter.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="1. PlannerContext extracted&#10;2. Comments added" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. PlannerContext extracted&#10;2. Comments added" />
   </component>
 </project>

@@ -15,7 +15,7 @@ public class DrillingValidator implements SourceValidator<SharpHole> {
     }
 
     @Override
-    public boolean validate(Set<SharpHole> element, Piece piece) {
+    public boolean validate(Set<? extends SharpHole> element, Piece piece) {
         for (SharpHole sh : element) {
             if (sh.getDiameter() > maxDiam) return false;
         }

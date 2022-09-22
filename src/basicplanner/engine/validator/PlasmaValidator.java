@@ -2,7 +2,6 @@ package basicplanner.engine.validator;
 
 import autorouter.core.Piece;
 import elements.Contour;
-import elements.Element;
 
 import java.util.Set;
 
@@ -17,12 +16,11 @@ public class PlasmaValidator implements SourceValidator<Contour> {
     }
 
     @Override
-    public boolean validate(Set<Contour> contours, Piece piece) {
-
+    public boolean validate(Set<? extends Contour> contours, Piece piece) {
         boolean cond1 = piece.getHeight() <= maxThickness;
         boolean isSkewed = false;
         for (Contour c : contours) {
-            if(c.getPointList().stream().anyMatch(p -> p.ang1 != 0 || p.ang2 != 0)){
+            if (c.getPointList().stream().anyMatch(p -> p.ang1 != 0 || p.ang2 != 0)) {
                 isSkewed = true;
             }
         }

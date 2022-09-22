@@ -15,7 +15,7 @@ public class ShearingValidator implements SourceValidator<Contour> {
     }
 
     @Override
-    public boolean validate(Set<Contour> contour, Piece piece) {
+    public boolean validate(Set<? extends Contour> contour, Piece piece) {
         //Проверка на прямолинейность и выпуклость контура. Если и прямолинейный и выпуклый, то вырубка на гильотине
         // возможна
         for (Contour c : contour) {
