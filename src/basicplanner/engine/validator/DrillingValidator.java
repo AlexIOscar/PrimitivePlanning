@@ -6,7 +6,7 @@ import elements.SharpHole;
 
 import java.util.Set;
 
-public class DrillingValidator implements SourceValidator<SharpHole> {
+public class DrillingValidator implements SourceValidator {
 
     double maxDiam;
 
@@ -15,9 +15,12 @@ public class DrillingValidator implements SourceValidator<SharpHole> {
     }
 
     @Override
-    public boolean validate(Set<? extends SharpHole> element, Piece piece) {
-        for (SharpHole sh : element) {
-            if (sh.getDiameter() > maxDiam) return false;
+    public boolean validate(Set<? extends Element> element, Piece piece) {
+        for (Element sh : element) {
+            if(!(sh instanceof SharpHole)){
+                return false;
+            }
+            if (((SharpHole)sh).getDiameter() > maxDiam) return false;
         }
         return true;
     }

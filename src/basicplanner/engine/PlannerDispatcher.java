@@ -46,9 +46,9 @@ public class PlannerDispatcher {
             for (Resource r : resources) {
                 //надо проверить исполним ли элемент на этой единице
 
-//                if (!r.validator.validate(bundle, piece)) {
-//                    continue;
-//                }
+                if (!r.validator.validate(bundle, piece)) {
+                    continue;
+                }
 
                 double duration = LabourDispatcher.getDuration(bundle, r, piece);
                 labMapByResource.put(r, duration);

@@ -13,7 +13,7 @@ public class Resource {
 
     //валидатор - с помощью него можно уточнить, может ли данный элемент быть выполнен на данном ресурсе
     // (удовлетворяет ли ограничениям)
-    public SourceValidator<? extends Element> validator;
+    public SourceValidator validator;
 
     //наименование
     public String name;
@@ -24,7 +24,7 @@ public class Resource {
         this.name = name;
     }
 
-    public void setValidator(SourceValidator<? extends Element> validator) {
+    public void setValidator(SourceValidator validator) {
         this.validator = validator;
     }
 

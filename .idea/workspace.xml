@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="1. PlannerContext extracted&#10;2. Comments added">
+    <list default="true" id="5c34b7c3-ca66-4504-884b-ba731786ee57" name="Default Changelist" comment="1. Misc refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicplanner/domain/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/domain/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/PlannerContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/PlannerContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/PlannerDispatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/validator/DrillingValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/DrillingValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/validator/PlasmaValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/PlasmaValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicplanner/engine/validator/ShearingValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicplanner/engine/validator/ShearingValidator.java" afterDir="false" />
@@ -22,6 +25,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="5f509cc83b4b32f62d74d105e3a58a7e6e62ee79" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
@@ -63,6 +71,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Starter" />
+        <item itemvalue="Application.Starter" />
+        <item itemvalue="Application.Starter" />
+        <item itemvalue="Application.Starter" />
         <item itemvalue="Application.Starter" />
       </list>
     </recent_temporary>
@@ -153,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663642994156</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="1. Misc refactoring">
+      <created>1663825701663</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1663825701663</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +207,7 @@
     <MESSAGE value="1. planPiece refactored" />
     <MESSAGE value="1. planPiece complete for first version" />
     <MESSAGE value="1. PlannerContext extracted&#10;2. Comments added" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. PlannerContext extracted&#10;2. Comments added" />
+    <MESSAGE value="1. Misc refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Misc refactoring" />
   </component>
 </project>

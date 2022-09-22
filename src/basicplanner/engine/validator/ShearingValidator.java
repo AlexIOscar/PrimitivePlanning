@@ -6,7 +6,7 @@ import elements.Element;
 
 import java.util.Set;
 
-public class ShearingValidator implements SourceValidator<Contour> {
+public class ShearingValidator implements SourceValidator {
 
     double maxThickness;
 
@@ -15,11 +15,14 @@ public class ShearingValidator implements SourceValidator<Contour> {
     }
 
     @Override
-    public boolean validate(Set<? extends Contour> contour, Piece piece) {
+    public boolean validate(Set<? extends Element> contour, Piece piece) {
         //Проверка на прямолинейность и выпуклость контура. Если и прямолинейный и выпуклый, то вырубка на гильотине
         // возможна
-        for (Contour c : contour) {
-            if (!(auxillary.ContourSolver.isConvexNGon(c) && piece.getHeight() <= maxThickness)) return false;
+        for (Element c : contour) {
+            if (!(c instanceof Contour)){
+                return false;
+            }
+            if (!(auxillary.ContourSolver.isConvexNGon((Contour) c) && piece.getHeight() <= maxThickness)) return false;
         }
         return true;
     }
